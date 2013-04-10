@@ -11,7 +11,8 @@ module TechnoGate
             Rails.public_path,
             group: true
           ).each do |list|
-            FileUtils.ln_sf list[0], list[1]
+            FileUtils.rm(list[0], :verbose => true)
+            FileUtils.ln_sf(list[0], list[1], :verbose => true)
           end
         end
 
