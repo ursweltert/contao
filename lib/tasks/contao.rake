@@ -30,6 +30,7 @@ namespace :contao do
     File.open(public_path.join('sitemap.xml'), 'w') {|f| f.write ''}
 
     Rake::Task['contao:generate_localconfig'].invoke
+    Rake::Task['contao:generate_initconfig'].invoke
     Rake::Task['contao:generate_htaccess'].invoke
     Rake::Task['contao:apply_patches'].invoke
     Rake::Task['assets:precompile'].invoke if Rails.env.production?
@@ -108,6 +109,18 @@ namespace :contao do
     ).generate
 
     TechnoGate::Contao::Notifier.notify 'The configuration file localconfig.php was generated successfully.'
+  end
+
+  desc "Generate the custom initconfig.php"
+  task :generate_initconfig => :environment do
+    require 'contao/generators/initconfig'
+
+    TechnoGate::Contao::Generators::Initconfig.new(
+      path: Rails.root,
+      template: Rails.root.join('config/examples/initconfig.php.erb'),
+    ).generate
+
+    TechnoGate::Contao::Notifier.notify 'The initconfig.php configuration file was generated successfully.'
   end
 
   desc "Generate the htaccess file"

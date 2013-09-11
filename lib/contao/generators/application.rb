@@ -6,7 +6,7 @@ module TechnoGate
   module Contao
     module Generators
       class Application < Base
-        REPO_URL = 'https://github.com/TechnoGate/contao_template.git'
+        REPO_URL = '/Users/urs/Work/Resources/Git/contao_template'
 
         def generate
           require_global_config
