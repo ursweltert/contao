@@ -55,14 +55,14 @@ module TechnoGate
         end
 
         def commit_everything
-          Dir.chdir project_path do
-            Contao::System.safe_system('git', 'add', '-A', '.')
-            Contao::System.safe_system(
-              'git',
-              'commit',
-              '-m',
-              'Freshly generated project'
-            )
+          # Dir.chdir project_path do
+          #   Contao::System.safe_system('git', 'add', '-A', '.')
+          #   Contao::System.safe_system(
+          #     'git',
+          #     'commit',
+          #     '-m',
+          #     'Freshly generated project'
+          #   )
           end
         end
 
